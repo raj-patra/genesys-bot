@@ -1,5 +1,6 @@
 import logging
 import telegram as tg
+from telegram import replymarkup
 
 from config import *
 from libgen_api import LibgenSearch
@@ -77,14 +78,14 @@ class GenesisBot:
                         continue
                     
                 if dwd_fail_flag:
-                    context.bot.send_message(chat_id=query.from_user.id, text="*Umm... Something went wrong.* 😕\n\nCould not download the file. Please try again with another file. :(", reply_markup=reply_markup)
+                    context.bot.send_message(chat_id=query.from_user.id, text=DWD_ERROR, reply_markup=reply_markup)
             else:
                 reply_markup = tg.InlineKeyboardMarkup([
                     [tg.InlineKeyboardButton('Direct Download', url=download_links['GET']), tg.InlineKeyboardButton('Cloudflare', url=download_links['Cloudflare'])],
                     [tg.InlineKeyboardButton('IPFS.io', url=download_links['IPFS.io']), tg.InlineKeyboardButton('Infura', url=download_links['Infura'])],
                     [tg.InlineKeyboardButton('◀ Back to Main Menu ', callback_data='redirect')]
                 ])
-                context.bot.send_message(chat_id=query.from_user.id, text="*Apologies... *😔\n\nTelegram does not support *auto-downloading* of a *non-pdf* document, yet. Please visit any of the links attached below to download the document.", parse_mode="Markdown", reply_markup=reply_markup)
+                context.bot.send_message(chat_id=query.from_user.id, text=DWD_EXCEPTION, parse_mode="Markdown", reply_markup=reply_markup)
 
         if query.data == 'redirect':
             reply_markup = tg.InlineKeyboardMarkup(self.main_menu)
@@ -115,7 +116,10 @@ class GenesisBot:
         update.message.reply_text(HELP_TXT, parse_mode="Markdown", disable_web_page_preview=True)
 
     def dev(self, update, context):
-        update.message.reply_text(DEV_TXT, parse_mode="Markdown")
+        reply_markup = tg.InlineKeyboardMarkup([
+            [tg.InlineKeyboardButton("LinkTree", url="https://linktr.ee/ign_mortal"), tg.InlineKeyboardButton("GitHub", url="https://github.com/raj-patra/genesys-bot")]
+        ])
+        update.message.reply_text(DEV_TXT, parse_mode="Markdown", reply_markup=reply_markup)
 
     def error(self, update, context):
         self.logger.warning('Update "%s" caused error "%s"', update, context.error)

@@ -1,9 +1,9 @@
 import os
 # ----------------------------------------------------------------------------------
 
-PORT = int(os.environ.get('PORT', 5000))
+PORT = os.environ.get('PORT', 5000)
 URL = 'https://genesys-bot.herokuapp.com/'
-TOKEN = str(os.environ['BOT_TOKEN'])
+TOKEN = os.environ.get('BOT_TOKEN')
 
 # ----------------------------------------------------------------------------------
 
@@ -13,6 +13,7 @@ Hi! I am *Genesis*, a digital librarian.
 Search a book by title in here or use the commands and inline queries in private chats/groups for best results.
 GLHF
 """
+
 HELP_TXT = """
 Need some help? I've got you covered.
 
@@ -29,8 +30,12 @@ DEV_TXT = """
 Made with focus, commitment and sheer will and some py3 ;)
 For any queries contact, [a_ignorant_mortal](https://t.me/a_ignorant_mortal)
 
-More about the dev: [Linktree](https://linktr.ee/ign_mortal)
+More about the dev:
 """
+
+DWD_ERROR = "*Umm... Something went wrong.* 😕\n\nCould not download the file. Please try again with another file. :("
+
+DWD_EXCEPTION = "*Apologies... *😔\n\nTelegram does not support *auto-downloading* of a *non-pdf* document, yet. Please visit any of the links attached below to download the document."
 
 # ----------------------------------------------------------------------------------
 
