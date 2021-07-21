@@ -27,9 +27,10 @@ Have a nice day.
 """
 
 DEV_TXT = """
-Made with focus, commitment and sheer will and some py3 ;)
-For any queries contact, [a_ignorant_mortal](https://t.me/a_ignorant_mortal)
+Made with focus, commitment and sheer f'in will.
+Probably some py3 too ;)
 
+For any queries contact, [a_ignorant_mortal](https://t.me/a_ignorant_mortal)
 More about the dev:
 """
 
