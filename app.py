@@ -1,7 +1,10 @@
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackQueryHandler, InlineQueryHandler
 from bot import GenesisBot
-from config import *
+import os
 
+PORT = os.environ.get('PORT', 5000)
+URL = 'https://genesys-bot.herokuapp.com/'
+TOKEN = os.environ.get('BOT_TOKEN')
 
 def app():
     genesis = GenesisBot()
@@ -18,7 +21,7 @@ def app():
 
     dp.add_error_handler(genesis.error)
 
-    updater.start_webhook(listen='0.0.0.0', port=int(PORT), webhook_url=URL)
+    updater.start_webhook(listen='0.0.0.0', port=PORT, webhook_url=URL)
     updater.idle()
 
 if __name__ == '__main__':
