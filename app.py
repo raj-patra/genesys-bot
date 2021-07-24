@@ -3,8 +3,8 @@ from bot import GenesisBot
 import os
 
 PORT = os.environ.get('PORT', 5000)
-URL = 'https://genesys-bot.herokuapp.com/'
 TOKEN = os.environ.get('BOT_TOKEN')
+URL = 'https://genesys-bot.herokuapp.com/'
 
 def app():
     genesis = GenesisBot()
