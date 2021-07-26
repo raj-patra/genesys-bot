@@ -3,12 +3,12 @@ from bot import GenesisBot
 import os
 
 PORT = os.environ.get('PORT', 5000)
-TOKEN = os.environ.get('BOT_TOKEN')
-URL = 'https://genesys-bot.herokuapp.com/'
+AUTH = os.environ.get('BOT_TOKEN')
+HOOK = 'https://genesys-bot.herokuapp.com/'
 
 def app():
     genesis = GenesisBot()
-    updater = Updater(TOKEN, use_context=True)
+    updater = Updater(AUTH, use_context=True)
 
     dp = updater.dispatcher
 
@@ -21,7 +21,7 @@ def app():
 
     dp.add_error_handler(genesis.error)
 
-    updater.start_webhook(listen='0.0.0.0', port=PORT, webhook_url=URL)
+    updater.start_webhook(listen='0.0.0.0', port=PORT, webhook_url=HOOK)
     updater.idle()
 
 if __name__ == '__main__':
