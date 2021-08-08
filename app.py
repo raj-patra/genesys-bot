@@ -4,7 +4,7 @@ import os
 
 PORT = os.environ.get('PORT', 5000)
 AUTH = os.environ.get('GENESYS_BOT_TOKEN')
-HOOK = 'https://genesys-bot.herokuapp.com/'
+HOOK = os.environ.get('WEBHOOK')
 
 def app():
     genesis = GenesisBot()
