@@ -3,7 +3,7 @@ from bot import GenesisBot
 import os
 
 PORT = os.environ.get('PORT', 5000)
-AUTH = os.environ.get('BOT_TOKEN')
+AUTH = os.environ.get('GENESYS_BOT_TOKEN')
 HOOK = 'https://genesys-bot.herokuapp.com/'
 
 def app():
